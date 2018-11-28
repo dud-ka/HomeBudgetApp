@@ -43,8 +43,7 @@ public class RegistrationController {
 			return "/register";
 		}
 		registrationService.register(userRegisterDTO);
-
-		return "redirect:/register";
+		return "success";
 	}
 
 	private boolean checkPassword(UserRegisterDTO userRegisterDTO){
