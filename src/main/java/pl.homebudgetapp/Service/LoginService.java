@@ -26,6 +26,10 @@ public class LoginService {
 			return null;
 		}
 		User user = userRepository.findAllByEmail(email);
+		if(user == null) {
+			return null;
+		}
+
 		boolean bcrypt = BCrypt.checkpw(password, user.getPassword());
 
 		System.out.println("BCRYPT   " + bcrypt);
