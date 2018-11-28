@@ -6,5 +6,6 @@ import pl.homebudgetapp.Entity.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 
 	User findAllByEmail(String email);
+	User findByEmailAndPassword(String email, String password);
 
 }
