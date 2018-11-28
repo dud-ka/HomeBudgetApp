@@ -17,7 +17,7 @@ import javax.validation.Valid;
 @Controller
 public class LoginController {
 
-	private static final String LOGGED_USER_KEY= "logged-user";
+	public static final String LOGGED_USER_KEY= "logged-user";
 
 	@Autowired
 	LoginService loginService;
@@ -43,7 +43,7 @@ public class LoginController {
 
 		session.setAttribute(LOGGED_USER_KEY, userDTO);
 		System.out.println("zalogowano " + userDTO.getUsername());
-		return "redirect:/login";
+		return "redirect:/main";
 	}
 
 }
