@@ -50,4 +50,15 @@ public class BillDetailsDTO {
 	public void setCategory(String category) {
 		this.category = category;
 	}
+
+	@Override
+	public String toString() {
+		return "BillDetailsDTO{" +
+				"id=" + id +
+				", date=" + date +
+				", description='" + description + '\'' +
+				", amount=" + amount +
+				", category='" + category + '\'' +
+				'}';
+	}
 }

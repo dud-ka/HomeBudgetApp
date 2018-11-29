@@ -62,16 +62,17 @@ public class BillDetailsController {
 			return "/main";
 		}
 		model.addAttribute("editBill", billDTO);
+		model.addAttribute("billDetails", new BillDetailsDTO());
 
 		return "edit";
 	}
 
-	@PostMapping("/edit/{id}")
+	@PostMapping("/edit/{billId}")
 	public String saveDetails(@ModelAttribute("billDetails") BillDetailsDTO billDetailsDTO,
-	                          BindingResult bindingResult, HttpSession session, @PathVariable Long id) {
-
-		billDetailsService.update(billDetailsDTO,id);
-		return "redirect:/main";
+	                          BindingResult bindingResult, HttpSession session, @PathVariable Long billId) {
+		System.out.println(billDetailsDTO);
+		billDetailsService.update(billDetailsDTO,billId);
+		return "redirect:/edit/" + billId;
 	}
 
 

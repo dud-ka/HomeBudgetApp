@@ -6,7 +6,10 @@
     <title>Title</title>
 </head>
 <body>
-
+<header>
+    <span>Zalogowany użytkownik: ${loggedUser.username} </span> <button><a href="/logout"> WYLOGUJ </a></button>
+    <button><a href="/main"> Powrót do strony głównej </a></button>
+</header>
 
 ${editBill.total}
 <%--${editBill.billDetails}--%>
