@@ -2,6 +2,7 @@ package pl.homebudgetapp.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.homebudgetapp.Entity.Bill;
 import pl.homebudgetapp.Entity.BillDetails;
 import pl.homebudgetapp.Repository.BillDetailsRepository;
 import pl.homebudgetapp.Web.Dtos.BillDetailsDTO;
@@ -23,6 +24,7 @@ public class BillDetailsService {
 		List<BillDetails> billDetails = billDetailsRepository.findAllUserBills(userDTO.getId());
 		for(BillDetails b : billDetails){
 			BillDetailsDTO billDetailsDTO = new BillDetailsDTO();
+			billDetailsDTO.setId(b.getBill().getId());
 			billDetailsDTO.setDate(b.getBill().getDate());
 			billDetailsDTO.setDescription(b.getBill().getDescription());
 			billDetailsDTO.setAmount(b.getAmount());
@@ -32,6 +34,8 @@ public class BillDetailsService {
 
 		return billList;
 	}
+
+
 
 
 }

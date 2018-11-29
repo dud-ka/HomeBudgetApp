@@ -20,6 +20,9 @@
             max-width: 500px;
             margin: 0 auto;
         }
+        th, td{
+            border: 1px solid black;
+        }
     </style>
 </head>
 <body>
@@ -28,20 +31,27 @@
     <header>
         <span>Zalogowany użytkownik: ${loggedUser.username} </span> <button><a href="/logout"> WYLOGUJ </a></button>
     </header>
+    <div>
+        <center><button><a href="/add">Dodaj paragon</a></button></center>
+    </div>
     <table>
         <thead>
+        <th>Nr paragonu</th>
         <th>Data</th>
         <th>Opis</th>
         <th>Kwota</th>
         <th>Kategoria</th>
+        <th></th>
         </thead>
         <tbody>
         <c:forEach items="${userBills}" var="bill">
         <tr>
+            <td>${bill.id}</td>
             <td>${bill.date}</td>
             <td>${bill.description}</td>
             <td>${bill.amount}</td>
             <td>${bill.category}</td>
+            <td><a href="/edit/${bill.id}">Edytuj</a></td>
         </tr>
         </c:forEach>
         </tbody>

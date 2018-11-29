@@ -2,6 +2,7 @@ package pl.homebudgetapp.Entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "bill")
@@ -10,7 +11,7 @@ public class Bill {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Timestamp date;
+	private LocalDate date;
 	private Double total;
 	private String description;
 	@ManyToOne
@@ -24,11 +25,11 @@ public class Bill {
 		this.id = id;
 	}
 
-	public Timestamp getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Timestamp date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 

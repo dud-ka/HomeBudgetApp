@@ -23,7 +23,6 @@ public class RegistrationService {
 
 		User user = userRepository.findAllByEmail(email);
 
-		// OK - user doesn't exist
 		return user == null;
 
 	}
@@ -37,6 +36,5 @@ public class RegistrationService {
 		userRepository.save(user);
 	}
 
-	// TODO: 28.11.18  dodaj mu kategorie wydatków
 
 }
