@@ -3,9 +3,16 @@
 <html>
 <head>
     <title>Login</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,700,700i" rel="stylesheet">
+    <link href="https://unpkg.com/lemoncss/dist/lemon.min.css" rel="stylesheet">
+    <style>
+        .small{
+            margin-top: 10vh;
+        }
+    </style>
 </head>
 <body>
-<div>
+<div class="container small">
 
     <form:form modelAttribute="loginForm" method="post">
         <div>
