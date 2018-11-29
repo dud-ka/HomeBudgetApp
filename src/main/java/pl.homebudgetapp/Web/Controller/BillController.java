@@ -67,7 +67,7 @@ public class BillController {
 		Bill bill =  billService.saveBill(addBillDTO, user);
 		billService.saveBillDetails(billDetailsDTO,bill, addBillDTO);
 
-		return "redirect:/main";
+		return "redirect:/edit/"+bill.getId();
 
 
 

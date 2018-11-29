@@ -4,9 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.homebudgetapp.Entity.Bill;
 import pl.homebudgetapp.Entity.BillDetails;
+import pl.homebudgetapp.Entity.User;
 import pl.homebudgetapp.Repository.BillDetailsRepository;
+import pl.homebudgetapp.Repository.BillRepository;
 import pl.homebudgetapp.Web.Dtos.BillDetailsDTO;
 import pl.homebudgetapp.Web.Dtos.UserDTO;
+import pl.homebudgetapp.Web.Dtos.UserRegisterDTO;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
@@ -18,6 +21,9 @@ public class BillDetailsService {
 
 	@Autowired
 	BillDetailsRepository billDetailsRepository;
+
+	@Autowired
+	BillRepository billRepository;
 
 	public List<BillDetailsDTO> billList(UserDTO userDTO) {
 		List<BillDetailsDTO> billList = new ArrayList<>();
@@ -34,8 +40,18 @@ public class BillDetailsService {
 
 		return billList;
 	}
+	public void update(BillDetailsDTO billDetailsDTO, Long billId){
+		Bill bill =	billRepository.findOne(billId);
 
+		BillDetails billDetails = new BillDetails();
+		billDetails.setCategory(billDetailsDTO.getCategory());
+		billDetails.setAmount(billDetailsDTO.getAmount());
+		billDetails.setBill(bill);
+		billDetails.setId(billDetailsDTO.getId());
 
+		billDetailsRepository.save(billDetails);
+
+	}
 
 
 }

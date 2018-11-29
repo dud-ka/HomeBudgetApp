@@ -3,6 +3,7 @@ package pl.homebudgetapp.Entity;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "bill")
@@ -14,6 +15,9 @@ public class Bill {
 	private LocalDate date;
 	private Double total;
 	private String description;
+
+	@OneToMany(mappedBy = "bill", fetch = FetchType.EAGER)
+	private List<BillDetails> billDetails;
 	@ManyToOne
 	private User user;
 
@@ -55,5 +59,13 @@ public class Bill {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public List<BillDetails> getBillDetails() {
+		return billDetails;
+	}
+
+	public void setBillDetails(List<BillDetails> billDetails) {
+		this.billDetails = billDetails;
 	}
 }

@@ -9,7 +9,6 @@ import pl.homebudgetapp.Repository.BillDetailsRepository;
 import pl.homebudgetapp.Repository.BillRepository;
 import pl.homebudgetapp.Web.Dtos.AddBillDTO;
 import pl.homebudgetapp.Web.Dtos.BillDetailsDTO;
-import pl.homebudgetapp.Web.Dtos.UserDTO;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
