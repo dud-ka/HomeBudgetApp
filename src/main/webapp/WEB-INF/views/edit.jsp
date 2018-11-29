@@ -41,6 +41,27 @@ ${editBill.total}
 
 
     </c:forEach>
+
+
+    <form:form modelAttribute="billDetails" action="" method="post" id="new">
+        <tr>
+            <td>
+                <input type="text" name="amount" form="new"/>
+
+            </td>
+            <td>
+                <select name="category" class="categories" form="new">
+                    <c:forEach items="${categories}" var="cat">
+                        <option>${cat}</option>
+                    </c:forEach>
+                </select>
+            </td>
+            <td><input type="submit" value="save"/></td>
+        </tr>
+    </form:form>
+
+
+
     </tbody>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
