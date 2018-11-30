@@ -4,35 +4,84 @@
 <html>
 <head>
     <title>Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,700,700i" rel="stylesheet">
+    <link href="https://unpkg.com/lemoncss/dist/lemon.min.css" rel="stylesheet">
+    <style>
+        button>a,
+        button>a:link,
+        button>a:visited
+     {
+            color: #ffffff;
+        }
+        header {
+            margin-top: 5vh;
+            margin-bottom: 5vh;
+        }
+        .small {
+            width: 40vw;
+        }
+
+    </style>
 </head>
 <body>
 <header>
-    <span>Zalogowany użytkownik: ${loggedUser.username} </span> <button><a href="/logout"> WYLOGUJ </a></button>
-    <button><a href="/main"> Powrót do strony głównej </a></button>
+    <div class="row">
+        <div class="column"><center>Zalogowany użytkownik: ${loggedUser.username} </center></div>
+    </div>
+    <div class="row">
+        <div class="column">
+            <center><button><a href="/logout"> WYLOGUJ </a></button></center>
+        </div>
+        <div class="column">
+            <center><button><a href="/main"> Powrót do podsumowania </a></button></center>
+        </div>
+    </div>
 </header>
 
-${editBill.total}
-<%--${editBill.billDetails}--%>
+
+<div class="container small">
+    <div>
+        <p id = "total"><strong>Kwota paragonu: ${editBill.total} zł</strong></p>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Kwota</th>
+            <th>Kategoria</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${editBill.detailsDTOS}" var="bill">
+            <form:form modelAttribute="billDetails" action="" method="post" id="${bill.id}">
+                <tr>
+                    <td>
+                        <input type="hidden" name="id" value="${bill.id}" form="${bill.id}"/>
+                        <input type="text" name="amount" value="${bill.amount}" form="${bill.id}"/>
+
+                    </td>
+                    <td>
+                        <select data-value="${bill.category}" name="category" class="categories" form="${bill.id}">
+                            <c:forEach items="${categories}" var="cat">
+                                <option>${cat}</option>
+                            </c:forEach>
+                        </select>
+                    </td>
+                    <td><input type="submit" value="save"/></td>
+                </tr>
+            </form:form>
 
 
-<table>
-    <thead>
-    <tr>
-        <th>Kwota</th>
-        <th>Kategoria</th>
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach items="${editBill.detailsDTOS}" var="bill">
-        <form:form modelAttribute="billDetails" action="" method="post" id="${bill.id}">
+        </c:forEach>
+
+
+        <form:form modelAttribute="billDetails" action="" method="post" id="new">
             <tr>
                 <td>
-                    <input type="hidden" name="id" value="${bill.id}" form="${bill.id}"/>
-                    <input type="text" name="amount" value="${bill.amount}" form="${bill.id}"/>
+                    <input type="text" name="amount" form="new"/>
 
                 </td>
                 <td>
-                    <select data-value="${bill.category}" name="category" class="categories" form="${bill.id}">
+                    <select name="category" class="categories" form="new">
                         <c:forEach items="${categories}" var="cat">
                             <option>${cat}</option>
                         </c:forEach>
@@ -43,35 +92,15 @@ ${editBill.total}
         </form:form>
 
 
-    </c:forEach>
 
-
-    <form:form modelAttribute="billDetails" action="" method="post" id="new">
-        <tr>
-            <td>
-                <input type="text" name="amount" form="new"/>
-
-            </td>
-            <td>
-                <select name="category" class="categories" form="new">
-                    <c:forEach items="${categories}" var="cat">
-                        <option>${cat}</option>
-                    </c:forEach>
-                </select>
-            </td>
-            <td><input type="submit" value="save"/></td>
-        </tr>
-    </form:form>
-
-
-
-    </tbody>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            document.querySelectorAll("select.categories").forEach(e => e.value = e.dataset.value)
-        })
-    </script>
-</table>
+        </tbody>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                document.querySelectorAll("select.categories").forEach(e => e.value = e.dataset.value)
+            })
+        </script>
+    </table>
+</div>
 
 </body>
 </html>

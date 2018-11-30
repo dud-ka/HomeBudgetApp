@@ -4,41 +4,51 @@
 <html>
 <head>
     <title>Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,700,700i" rel="stylesheet">
+    <link href="https://unpkg.com/lemoncss/dist/lemon.min.css" rel="stylesheet">
     <style>
+        button>a,
+        button>a:link,
+        button>a:visited {
+            color: #ffffff;
+        }
         header {
-            height: 50px;
-            font-size: 20px;
-            width: 1200px;
-            margin: 0 auto;
-            background-color: beige;
+            margin-top: 5vh;
+            margin-bottom: 5vh;
         }
-        body {
-            width: 1200px;
-            margin: 0 auto;
-            background-color: wheat;
+        .small {
+            width: 30vw;
         }
-        table {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        th, td{
-            border: 1px solid black;
-        }
+
     </style>
+
 </head>
 <body>
 <header>
     <c:if test="${loggedUser != null}">
-        <span>Zalogowany użytkownik: ${loggedUser.username} </span>
-        <button><a href="/main"> Powrót do podsumowania </a></button>
-        <button><a href="/logout"> WYLOGUJ </a></button></span>
 
-        <form:form modelAttribute="newBill" method="post">
-            <form:input path="date" type = "date" autocomplete="true"/><br>
-            <form:input path="total" placeholder = "suma"/><form:errors path="total"/><br>
-            <form:input path="description" placeholder = "opis"/><form:errors path="description"/><br>
-            <form:button>ZAPISZ</form:button>
-        </form:form>
+        <header>
+            <div class="row">
+                <div class="column"><center>Zalogowany użytkownik: ${loggedUser.username} </center></div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <center><button><a href="/logout"> WYLOGUJ </a></button></center>
+                </div>
+                <div class="column">
+                    <center><button><a href="/main"> Powrót do podsumowania </a></button></center>
+                </div>
+            </div>
+        </header>
+
+        <div class="container small">
+            <form:form modelAttribute="newBill" method="post">
+                <form:input path="date" type = "date" autocomplete="true"/><br>
+                <form:input path="total" placeholder = "suma"/><form:errors path="total"/><br>
+                <form:input path="description" placeholder = "opis"/><form:errors path="description"/><br>
+                <form:button>ZAPISZ</form:button>
+            </form:form>
+        </div>
     </c:if>
 </header>
 </body>

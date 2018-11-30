@@ -3,38 +3,42 @@
 <html>
 <head>
     <title>Home Budget App</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,700,700i" rel="stylesheet">
+    <link href="https://unpkg.com/lemoncss/dist/lemon.min.css" rel="stylesheet">
     <style>
+       button>a,
+       button>a:link,
+       button>a:visited {
+            color: #ffffff;
+        }
         header {
-            height: 50px;
-            font-size: 20px;
-            width: 1200px;
-            margin: 0 auto;
-            background-color: beige;
+            margin-top: 5vh;
+            margin-bottom: 5vh;
         }
-        body {
-            width: 1200px;
-            margin: 0 auto;
-            background-color: wheat;
-        }
-        table {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        th, td{
-            border: 1px solid black;
-        }
+
     </style>
 </head>
 <body>
 
 <c:if test="${loggedUser != null}">
     <header>
-        <span>Zalogowany użytkownik: ${loggedUser.username} </span> <button><a href="/logout"> WYLOGUJ </a></button>
+        <div class="row">
+            <div class="column"><center>Zalogowany użytkownik: ${loggedUser.username} </center></div>
+        </div>
+        <div class="row">
+
+            <div class="column">
+                <center><button><a href="/logout"> WYLOGUJ </a></button></center>
+            </div>
+
+        </div>
     </header>
+
     <div>
         <center><button><a href="/add">Dodaj paragon</a></button></center>
     </div>
-    <table>
+
+    <table class="container small">
         <thead>
         <th>Nr paragonu</th>
         <th>Data</th>
@@ -45,14 +49,14 @@
         </thead>
         <tbody>
         <c:forEach items="${userBills}" var="bill">
-        <tr>
-            <td>${bill.id}</td>
-            <td>${bill.date}</td>
-            <td>${bill.description}</td>
-            <td>${bill.amount}</td>
-            <td>${bill.category}</td>
-            <td><a href="/edit/${bill.id}">Edytuj</a></td>
-        </tr>
+            <tr>
+                <td>${bill.id}</td>
+                <td>${bill.date}</td>
+                <td>${bill.description}</td>
+                <td>${bill.amount}</td>
+                <td>${bill.category}</td>
+                <td><a href="/edit/${bill.id}">Edytuj</a></td>
+            </tr>
         </c:forEach>
         </tbody>
     </table>

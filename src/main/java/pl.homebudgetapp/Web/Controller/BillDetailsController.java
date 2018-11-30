@@ -63,6 +63,7 @@ public class BillDetailsController {
 		}
 		model.addAttribute("editBill", billDTO);
 		model.addAttribute("billDetails", new BillDetailsDTO());
+		model.addAttribute("loggedUser", loggedUser);
 
 		return "edit";
 	}
