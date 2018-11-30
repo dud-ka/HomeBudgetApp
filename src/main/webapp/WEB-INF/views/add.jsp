@@ -43,13 +43,21 @@
 
         <div class="container small">
             <form:form modelAttribute="newBill" method="post">
-                <form:input path="date" type = "date" autocomplete="true"/><br>
-                <form:input path="total" placeholder = "suma"/><form:errors path="total"/><br>
-                <form:input path="description" placeholder = "opis"/><form:errors path="description"/><br>
+                <form:errors path="date"/>
+                <form:input path="date" type = "date" id = "dateNow"/><br>
+                <form:errors path="total"/>
+                <form:input path="total" placeholder = "suma"/><br>
+                <form:errors path="description"/>
+                <form:input path="description" placeholder = "opis"/><br>
                 <form:button>ZAPISZ</form:button>
             </form:form>
         </div>
     </c:if>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('dateNow').valueAsDate = new Date();
+        })
+    </script>
 </header>
 </body>
 </html>

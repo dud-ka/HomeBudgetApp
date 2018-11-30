@@ -46,16 +46,18 @@ public class BillController {
 	}
 
 	@PostMapping("/add")
-	public String saveBill(@ModelAttribute("registerForm") @Valid AddBillDTO addBillDTO,
+	public String saveBill(@ModelAttribute("newBill") @Valid AddBillDTO addBillDTO,
 	                       BindingResult bindingResult, HttpSession session,
-	                       BillDetailsDTO billDetailsDTO){
+	                       BillDetailsDTO billDetailsDTO,
+	                       @SessionAttribute(value = LoginController.LOGGED_USER_KEY,
+			required = false) UserDTO loggedUser, Model model ){
+
 		UserDTO userDTO = (UserDTO) session.getAttribute("logged-user");
 		User user = userRepository.findOne(userDTO.getId());
+		model.addAttribute("loggedUser", loggedUser);
+		model.addAttribute("newBill", addBillDTO);
+		model.addAttribute("dateNow", LocalDate.now());
 
-		boolean test = false;
-		LocalDate date = addBillDTO.getDate();
-		System.out.println("DATA  " + date);
-		System.out.println(billService.isdateValid(addBillDTO));
 		if(bindingResult.hasErrors()){
 			return "add";
 		}
