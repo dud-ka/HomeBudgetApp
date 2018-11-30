@@ -28,13 +28,15 @@
     <c:if test="${loggedUser != null}">
 
         <header>
-            <div class="row">
-                <div class="column"><center>Zalogowany użytkownik: ${loggedUser.username} </center></div>
-            </div>
-            <div class="row">
+            <div class="row container small">
+                <div class="column">
+                    <center>Zalogowany użytkownik: ${loggedUser.username} </center>
+                </div>
                 <div class="column">
                     <center><button><a href="/logout"> WYLOGUJ </a></button></center>
                 </div>
+            </div>
+            <div class="row">
                 <div class="column">
                     <center><button><a href="/main"> Powrót do podsumowania </a></button></center>
                 </div>

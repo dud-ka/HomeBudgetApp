@@ -42,6 +42,10 @@ public class BillDetailsController {
 			return "redirect:/login";
 		}
 		Bill bill = billRepository.findOne(id);
+
+		if (!loggedUser.getId().equals(bill.getUser().getId())) {
+			return "redirect:/main";
+		}
 		BillDTO billDTO = new BillDTO();
 		billDTO.setId(bill.getId());
 		billDTO.setTotal(bill.getTotal());
