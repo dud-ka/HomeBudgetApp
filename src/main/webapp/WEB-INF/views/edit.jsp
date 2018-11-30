@@ -42,6 +42,7 @@
 <div class="container small">
     <div>
         <p id = "total"><strong>Kwota paragonu: ${editBill.total} zł</strong></p>
+        <p><strong>Edytujesz paragon nr:  ${editBill.id}</strong></p>
     </div>
     <table>
         <thead>

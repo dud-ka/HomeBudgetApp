@@ -1,6 +1,6 @@
 package pl.homebudgetapp.Web.Dtos;
 
-import java.sql.Timestamp;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public class BillDetailsDTO {
@@ -9,6 +9,7 @@ public class BillDetailsDTO {
 	private LocalDate date;
 	private String description;
 	private Double amount;
+	@NotNull
 	private String category;
 
 	public Long getId() {

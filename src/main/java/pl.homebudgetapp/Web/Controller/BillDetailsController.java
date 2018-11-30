@@ -70,16 +70,23 @@ public class BillDetailsController {
 
 	@PostMapping("/edit/{billId}")
 	public String saveDetails(@ModelAttribute("billDetails") BillDetailsDTO billDetailsDTO,
-	                          BindingResult bindingResult, HttpSession session, @PathVariable Long billId) {
-		System.out.println(billDetailsDTO);
-		billDetailsService.update(billDetailsDTO,billId);
+	                          BindingResult bindingResult, HttpSession session, @PathVariable Long billId,
+	                          Model model) {
+//		model.addAttribute("loggedUser", loggedUser);
+		model.addAttribute("newBill", billDetailsDTO);
+		if(bindingResult.hasErrors()) {
+			return "edit";
+		}
+
+			billDetailsService.update(billDetailsDTO,billId);
 		return "redirect:/edit/" + billId;
 	}
 
 
 	@ModelAttribute("categories")
 	public List<String> categories() {
-		String[] cat = {"jedzenie", "transport", "rtv/agd", "kosmetyki", "środki czystości", "ubrania"};
+		String[] cat = {"jedzenie", "transport", "rtv/agd", "kosmetyki", "środki czystości",
+				"ubrania", "prezenty", "inne"};
 		return Arrays.asList(cat);
 	}
 
