@@ -8,7 +8,8 @@
     <style>
        button>a,
        button>a:link,
-       button>a:visited {
+       button>a:visited,
+       a:active, a:focus, a:hover, a:link:active, a:link:focus, a:link:hover, a:visited:active, a:visited:focus, a:visited:hover{
             color: #ffffff;
         }
         header {
